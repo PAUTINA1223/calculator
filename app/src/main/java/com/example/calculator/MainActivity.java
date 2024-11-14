@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    private Button buttonAdd, buttonSubtract, buttonDivide, buttonMultiply, buttonClean;
+    private Button buttonAdd, buttonSubtract, buttonDivide, buttonMultiply, buttonClean, buttonStep;
     private TextView operation, result;
     private EditText number1, number2;
 
@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonDivide = findViewById(R.id.buttonDivide);
         buttonMultiply = findViewById(R.id.buttonMultiply);
         buttonClean = findViewById(R.id.buttonClean);
+        buttonStep = findViewById(R.id.buttonStep);
         operation = findViewById(R.id.operation);
         result = findViewById(R.id.result);
         number1 = findViewById(R.id.number1);
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonDivide.setOnClickListener(this);
         buttonMultiply.setOnClickListener(this);
         buttonClean.setOnClickListener(this);
+        buttonStep.setOnClickListener(this);
 
     }
 
@@ -59,11 +61,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else if (v.getId() == R.id.buttonSubtract) {
             operation.setText("-");
             res = num1 - num2;
+        } else if (v.getId() == R.id.buttonStep) {
+            operation.setText("a^n");
+            res = (float) Math.pow (num1,num2);
         } else if (v.getId() == R.id.buttonDivide) {
             if (num2 == 0) {
                 result.setText("Деление на ноль!");
                 return;
             }
+
             operation.setText("/");
             res = num1 / num2;
         } else if (v.getId() == R.id.buttonMultiply) {
